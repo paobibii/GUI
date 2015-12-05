@@ -50,77 +50,87 @@ public class customer {
 		frame.setBounds(100, 100, 722, 503);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblFindByName = new JLabel("Name");
 		lblFindByName.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		lblFindByName.setBounds(286, 210, 53, 15);
 		frame.getContentPane().add(lblFindByName);
-		
+
 		JLabel lblFindByLastname = new JLabel("Lastname");
 		lblFindByLastname.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		lblFindByLastname.setBounds(257, 253, 131, 15);
 		frame.getContentPane().add(lblFindByLastname);
-		
+
 		textField = new JTextField();
 		textField.setBounds(349, 209, 257, 19);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(349, 252, 257, 19);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(SystemColor.control);
 		textArea.setEditable(false);
 		textArea.setBounds(10, 248, 192, 205);
 		frame.getContentPane().add(textArea);
-		
+
 		JButton btnRegister = new JButton("");
 		btnRegister.setBackground(SystemColor.text);
 		btnRegister.setIcon(new ImageIcon(customer.class.getResource("/image/RegisBtn.jpg")));
 		btnRegister.setBorderPainted(false);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			frame.setVisible(false);
-			Add_remove add = new Add_remove();
-			add.frame.setVisible(true);
+				frame.setVisible(false);
+				Database data = new Database();
+				Add_remove add = new Add_remove();
+				add.frame.setVisible(true);
+				data.member.add(textField.getText());
 			}
 		});
 		btnRegister.setBounds(281, 294, 137, 50);
 		frame.getContentPane().add(btnRegister);
-		
+
 		JLabel lblCustomerDatebase = new JLabel("Customer Datebase");
 		lblCustomerDatebase.setFont(new Font("CordiaUPC", Font.BOLD, 27));
 		lblCustomerDatebase.setBounds(10, 224, 192, 15);
 		frame.getContentPane().add(lblCustomerDatebase);
-		
+
 		JButton btnUnregistered = new JButton("");
 		btnUnregistered.setBackground(SystemColor.text);
 		btnUnregistered.setIcon(new ImageIcon(customer.class.getResource("/image/UnregisBtn.jpg")));
 		btnUnregistered.setBorderPainted(false);
 		btnUnregistered.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int index = 0;
 				frame.setVisible(false);
+				Database data1 = new Database();
 				Add_remove add = new Add_remove();
 				add.frame.setVisible(true);
+				for ( index = 0; index < data1.member.size(); index++) {
+					if (data1.member.get(index) == textField.getText()) {
+						data1.member.remove(index);
+					}
+				}
+
 			}
 		});
 		btnUnregistered.setBounds(456, 294, 137, 50);
 		frame.getContentPane().add(btnUnregistered);
-		
+
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			frame.setVisible(false);
-			MainGUI main = new MainGUI();
-			main.frame.setVisible(true);
+				frame.setVisible(false);
+				MainGUI main = new MainGUI();
+				main.frame.setVisible(true);
 			}
 		});
 		btnBack.setBounds(612, 428, 67, 25);
 		frame.getContentPane().add(btnBack);
-		
+
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(customer.class.getResource("/image/CustomerBanner.jpg")));
 		label.setBounds(0, 0, 774, 475);

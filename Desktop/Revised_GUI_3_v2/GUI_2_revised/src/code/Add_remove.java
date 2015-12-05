@@ -18,6 +18,7 @@ public class Add_remove {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	public Database data4;
 
 	/**
 	 * Launch the application.
@@ -95,6 +96,14 @@ public class Add_remove {
 		JButton btnAddToDatabase = new JButton("");
 		btnAddToDatabase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			data4.addMember(textField.getText());
+            data4.member_Lastname.add(textField_1.getText());
+            data4.member_age.add(Integer.parseInt(textField_2.getText()));
+            if(rdbtnM.isSelected()){
+            	data4.gender.add("M");
+            }else if(rdbtnNewRadioButton.isSelected()){
+            	data4.gender.add("F");
+            }
 			}
 		});
 		btnAddToDatabase.setIcon(new ImageIcon(Add_remove .class.getResource("/image/addBtn.jpg")));
