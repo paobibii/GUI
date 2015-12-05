@@ -4,6 +4,8 @@ public class Database {
 
 	public ArrayList<String> member ;
 	public ArrayList<String> member_Lastname ;
+	public ArrayList<Integer> member_age ;
+	public ArrayList<String> gender ;
 	public ArrayList<String> getMember_Lastname() {
 		return member_Lastname;
 	}
@@ -22,8 +24,6 @@ public class Database {
 	public void setGender(ArrayList<String> gender) {
 		this.gender = gender;
 	}
-	public ArrayList<Integer> member_age ;
-	public ArrayList<String> gender ;
 	public void addMember(String mem){
     	member.add(mem);
     }
